@@ -24,7 +24,7 @@ export const login = async (req, res) => {
             path: '/',
         };
 
-        res.cookie("auth", token, serialize)
+        // res.cookie("auth", token, serialize)
         return res.status(200).send({ message: "Authentication completed successfully"})
     } catch (error) {
         res.status(500).json({ messageError: 'Internal Server Error'})
