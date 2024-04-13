@@ -3,6 +3,7 @@ import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
 
 import route from './routes.js';
 
@@ -17,6 +18,7 @@ mongoose.connect(process.env.DB_URL)
 .catch((error) => console.log(error))
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(route);
 
 app.listen(port, () => {
