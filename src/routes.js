@@ -5,7 +5,7 @@ import { works, createWork } from './controllers/worksController.js';
 import { login } from './controllers/LoginController.js';
 import { experiences, createExperience } from './controllers/ExperienceController.js';
 
-import checkToken from './middlewares/Middleware.js';
+import { checkToken } from './middlewares/Middleware.js';
 
 //telas inciais
 route.post('/login', login)

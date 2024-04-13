@@ -2,7 +2,7 @@ import 'dotenv/config'
 
 import jwt from 'jsonwebtoken'
 
-const checkToken = (req, res, next) => {
+export function checkToken (req, res, next) {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
 
@@ -17,5 +17,3 @@ const checkToken = (req, res, next) => {
         return res.status(401).json({ messageError: 'Invalid token!' })
     }
 }
-
-export default checkToken
