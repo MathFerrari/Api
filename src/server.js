@@ -4,12 +4,13 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 
-import route from '../routes.js';
+import route from './routes.js';
 
 const app = express();
 app.use(cors({
     origin: '*',
 }));
+
 const port  = process.env.PORT || 3333;
 mongoose.connect(process.env.DB_URL)
 .then( () => console.log('Connected to MongoDB'))
