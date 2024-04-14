@@ -16,15 +16,15 @@ export const login = async (req, res) => {
 
         const token = jwt.sign({ id: 1 }, secret)
 
-        const serialize = {
+        const cookie = res.cookie("auth", token, {
+            maxAge: 60 * 60 * 24 * 7,
             httpOnly: true,
-            secure: process.env.NODE_ENV !== 'development', // Definir como seguro apenas em produção
-            sameSite: 'strict',
-            maxAge: 3600 * 24 * 7, // 7 dias
+            secure: process.env.NODE_ENV !== 'development',
             path: '/',
-        };
+        })
 
-        // res.cookie("auth", token, serialize)
+        console.log(cookie)
+
         return res.status(200).send({ message: "Authentication completed successfully"})
     } catch (error) {
         res.status(500).json({ messageError: 'Internal Server Error'})
