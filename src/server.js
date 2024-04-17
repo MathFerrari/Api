@@ -8,11 +8,12 @@ import cookieParser from 'cookie-parser';
 import route from './routes.js';
 
 const app = express();
-app.use(cookieParser());
 app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true,
 }));
+app.use(cookieParser());
+
 
 const port  = process.env.PORT || 3333;
 mongoose.connect(process.env.DB_URL)
